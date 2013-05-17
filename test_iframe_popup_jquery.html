@@ -1,0 +1,56 @@
+<html>
+  <head>
+		<!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+		<script type="text/javascript">!window.jQuery && document.write(unescape('%3Cscript src="js/jquery.min.js"%3E%3C/script%3E'))</script>
+	<head>
+
+	<body>
+	
+		<!-- iframe popup -->
+		<style style="text/css">		
+			#mybox-overlay{left: 0;position: absolute;top: 0;width: 100%;z-index: 1100;}
+			#mybox-wrap {left: 0;outline: medium none;position: fixed; top: 0; z-index: 1101; background:#fff;width: 820px;}
+			#mybox-content {outline: medium none;overflow: hidden;padding: 0;position: relative;width: 0;z-index: 1102;}
+		</style>
+		<script type="text/javascript">
+		//<![CDATA[
+			jQuery(document).ready(function (e) {
+
+				jQuery('body').append('<div id="mybox-overlay" style="background-color: rgb(119, 119, 119); opacity: 0.7; cursor: pointer; height: 2455px; display: none;"></div>');
+				jQuery('body').append('<div id="mybox-wrap" style="height: auto; top: 50px; left: 220px; display: none;"><div id="fancybox-outer"><div id="fancybox-bg-n" class="fancybox-bg"></div><div id="fancybox-bg-ne" class="fancybox-bg"></div><div id="fancybox-bg-e" class="fancybox-bg"></div><div id="fancybox-bg-se" class="fancybox-bg"></div><div id="fancybox-bg-s" class="fancybox-bg"></div><div id="fancybox-bg-sw" class="fancybox-bg"></div><div id="fancybox-bg-w" class="fancybox-bg"></div><div id="fancybox-bg-nw" class="fancybox-bg"></div><div id="mybox-content" style="border-width: 10px; width: 800px; height: 578px;"></div><a id="fancybox-close" class="mybox-close" style="display: inline;"></a></div></div>')
+
+				jQuery("ul.policy li a").click(function (e) {
+					e.preventDefault();
+					var ref = jQuery(this).attr('href');					
+										
+					if (jQuery(this).is('[rel]')) {
+						var relType	=	jQuery(this).attr('rel');
+						if(relType == 'shippingpop'){jQuery('#mybox-content').css('height', '300px');}
+						jQuery("#mybox-overlay").show();
+						jQuery("#mybox-wrap").show();
+						jQuery('<iframe frameborder="0" scrolling="auto" src="' + ref + '" hspace="0" name="mybox-frame" id="mybox-frame" style="width:100%; height:100%"></iframe>').appendTo("#mybox-content");
+						jQuery("#mybox-content").show();					
+					}else{
+						location.href=ref;
+					}				
+				});
+				
+				jQuery("#mybox-overlay, .mybox-close").click(function(){
+					jQuery("#mybox-wrap").hide();
+					jQuery("#mybox-content").text('').hide();
+					jQuery("#mybox-overlay").hide();
+				});
+			});
+		//]]>
+		</script>
+
+		<ul class="policy">
+			<li><a rel="gpop" href="http://maheshbokkisam.blogspot.com">General FAQs</a></li>
+			<li><a rel="shippingpop" href="https://facebook.com">Free Shipping</a></li>
+			<li><a href="http://google.com">Google</a></li>
+		</ul>
+		<!-- iframe popup -->
+	</body>
+</html>
